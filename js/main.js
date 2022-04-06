@@ -4,11 +4,10 @@ let inpText = document.querySelector('.inpText');
 let inpPassword = document.querySelector('.inpPassword');
 let outer = document.querySelector('.outer');
 
-document.querySelector('.btn-login').onclick = (event) => {
+document.querySelector('.btn-login').addEventListener('click', ()=> {
     event.preventDefault();
+    
+    outer.innerHTML ='name ' + inpText.value + ' ' + 'password ' + inpPassword.value;
 
-    outer.innerHTML = inpText.value + inpPassword.value;
-
-    localStorage.setItem(inpText.value, inpPassword.value);
-
-}
+    localStorage.setItem('user', JSON.stringify({name: inpText.value, password: inpPassword.value}));
+});
